@@ -1,0 +1,121 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CervWell Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
+            }
+        }
+    </script>
+    <script src="script.js" type="module"></script>
+    <script type="text/javascript" 
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+</head>
+<body>
+    <header>
+        <h1>CervWell</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#prediction">Prediction</a></li>
+                <li><a href="#health-recommendation">Health Recommendations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Stay Ahead of Cervical Cancer with CervWell!</h2>
+            <p>Empowering women through early detection and personalized risk assessment.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="hero-image">
+            <img src="cervwell.jpg" alt="CervWell Awareness">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About CervWell</h2>
+        <p>CervWell is a revolutionary cervical cancer prediction platform designed to provide women with personalized risk assessments. By leveraging advanced algorithms and the latest medical research, we empower you to take control of your health and make informed decisions.</p>
+    </section>
+
+    <section id="prediction">
+        <h2>Cervical Cancer Prediction</h2>
+        <p>Our prediction tool analyzes various risk factors to provide you with a comprehensive assessment. Factors include age, medical history, lifestyle, and more. This information helps you understand your risk level and take proactive steps.</p>
+		<h4>Upload Dataset Here</h4>
+        <input type="file" id="datasetUpload" name="datasetUpload">
+        <button>Get Your Prediction</button>
+    </section>
+
+    <section id="health-recommendation">
+        <h2>Personalized Health Recommendations</h2>
+        <form id="health-form">
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="in years" required>
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="Height (cm)" required>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Weight (kg)" required>
+            <div>
+                <label for="smoking">Smoking Status:</label>
+                <select id="smoking" name="smoking">
+                    <option value="Non-smoker">Non-smoker</option>
+                    <option value="Smoker">Smoker</option>
+                </select>
+            </div>
+            <div>
+                <label for="fatigue">Fatigue Level:</label>
+                <select id="fatigue" name="fatigue">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <div>
+                <label for="diet">Diet Type:</label>
+                <select id="diet" name="diet">
+                    <option value="Regular">Regular</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="High Sugar">High Sugar</option>
+                </select>
+            </div>
+            <div>
+                <label for="physicalActivity">Physical Activity Level:</label>
+                <select id="physicalActivity" name="physicalActivity">
+                    <option value="Sedentary">Sedentary</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Active">Active</option>
+                </select>
+            </div>
+            <button type="button" onclick="getHealthRecommendation()">Get Recommendation</button>
+        </form>
+        <div id="recommendation-result"></div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? Reach out to us!</p>
+        <form>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 CervWell. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">YouTube</a>
+            <a href="#" target="_blank">Facebook</a>
+        </div>
+    </footer>
+</body>
+</html>

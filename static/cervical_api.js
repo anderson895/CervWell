@@ -1,17 +1,21 @@
 $(document).ready(function () {
     $("#Get_cervical_recommendation").click(function () {
         let isValid = true;
+        let emptyFields = [];
 
         // Loop through all input fields and validate
         $("input").each(function () {
             if ($(this).val().trim() === "") {
-                alertify.error("All fields must be filled out!");
+                let fieldName = $(this).attr("id").replace(/-/g, " ").toUpperCase(); // Get the field ID and format it
+                emptyFields.push(fieldName);
                 isValid = false;
-                return false; // Exit loop early
             }
         });
 
-        if (!isValid) return; // Stop execution if validation fails
+        if (!isValid) {
+            alertify.error("Please fill out the following fields: <br>" + emptyFields.join("<br>"));
+            return; // Stop execution if validation fails
+        }
 
         let userInput = {
             "Age": Number($("#age").val()),

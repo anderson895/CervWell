@@ -33,8 +33,7 @@ def home():
 def predict():
     try:
         data = request.get_json()
-        logger.info("📥 Received Data: %s", data)
-
+       
         # Function to safely convert values or use median values
         def safe_convert(value, key):
             try:
@@ -46,21 +45,19 @@ def predict():
         # Validate & Convert Data
         corrected_data = {feature: safe_convert(data.get(feature), feature) for feature in feature_names}
 
-        logger.info("🔍 Processed Input Data: %s", corrected_data)
+      
 
         # Convert to DataFrame & Ensure Correct Order
         input_df = pd.DataFrame([corrected_data])
-        logger.info("🛠 DataFrame Before Scaling:\n%s", input_df)
+  
 
         # Scale Input Data
         input_scaled = scaler.transform(input_df)
-        logger.info("📊 Scaled Input: %s", input_scaled)
 
         # Get Prediction & Probability
         prediction = model.predict(input_scaled)[0]
         probabilities = model.predict_proba(input_scaled)[0]
 
-        logger.info("🔍 Probability Distribution: %s", probabilities)
 
         response = {
             "prediction": "High Risk" if prediction == 1 else "Low Risk",
@@ -68,7 +65,7 @@ def predict():
             "full_probabilities": probabilities.tolist()
         }
 
-        logger.info("📤 Response Sent: %s", response)
+       
         return jsonify(response)
 
     except Exception as e:

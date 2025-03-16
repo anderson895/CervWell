@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
+from sklearn.metrics import classification_report, accuracy_score, roc_auc_score, confusion_matrix
 
 print("Training Random Forest Model...")
 
@@ -52,4 +53,25 @@ rf_model.fit(X_train, y_train)
 joblib.dump(rf_model, "cervical_cancer_model.pkl")
 joblib.dump(scaler, "scaler.pkl")
 
+# Predict using the model
+y_pred_best = rf_model.predict(X_test)
+y_pred_proba = rf_model.predict_proba(X_test)[:, 1]  # Probabilities for AUC-ROC
+
+# Calculate metrics
+accuracy = accuracy_score(y_test, y_pred_best)
+auc_roc = roc_auc_score(y_test, y_pred_proba)
+conf_matrix = confusion_matrix(y_test, y_pred_best)
+class_report = classification_report(y_test, y_pred_best)
+
+# Print the results
+print("Final Best Model Accuracy:", accuracy)
+print("Final Best Model AUC-ROC Score:", auc_roc)
+print("Final Best Model Confusion Matrix:\n", conf_matrix)
+print("Final Best Model Classification Report:\n", class_report)
+
+# Optionally, save the classification report to a text file
+with open("classification_report.txt", "w") as file:
+    file.write(class_report)
+
 print("✅ Model, Scaler, and Medians Saved Successfully!")
+print("✅ Classification Report Saved to classification_report.txt!")

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-[#f4f4f4] text-[#333]">
+    <h1 class="text-3xl font-serif font-bold text-[#008080] mb-6">Welcome to Cerve Well</h1>
+    <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-center text-[#008080]">Login</h2>
+        <form id="login-form" class="mt-4">
+            <input type="text" id="username" placeholder="Username" required 
+                class="w-full px-4 py-2 mb-3 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#008080]">
+            <input type="password" id="password" placeholder="Password" required 
+                class="w-full px-4 py-2 mb-3 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#008080]">
+            <button type="submit" 
+                class="w-full px-4 py-2 text-white bg-[#008080] rounded-md hover:bg-[#006666] transition ease-in-out">Login</button>
+        </form>
+        <p id="message" class="mt-2 text-center"></p>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#login-form").submit(function(event) {
+                event.preventDefault();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                
+                var staticUsername = "admin";
+                var staticPassword = "password123";
+                
+                if (username === staticUsername && password === staticPassword) {
+                    $("#message").text("Login successful! Redirecting...").css("color", "green");
+                    setTimeout(function() {
+                        window.location.href = "/home";
+                    }, 1000);
+                } else {
+                    $("#message").text("Invalid username or password.").css("color", "red");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $("#Get_cervical_recommendation").click(function () {
+    // $("#cervical-form").click(function () {
+    $("#cervical-form").submit(function (e) {
         let userInput = {
             "Age": Number($("#age").val()),
             "Smokes (years)": Number($("#smoking-years").val()),

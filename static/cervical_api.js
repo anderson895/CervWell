@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // $("#cervical-form").click(function () {
     $("#cervical-form").submit(function (e) {
+        e.preventDefault();
         let userInput = {
             "Age": Number($("#age").val()),
             "Smokes (years)": Number($("#smoking-years").val()),

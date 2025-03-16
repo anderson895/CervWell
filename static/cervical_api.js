@@ -47,14 +47,14 @@ $(document).ready(function () {
             data: JSON.stringify(userInput),
             success: function (response) {
                 console.log("✅ Response Received:", response);
-                $("#recommendation-result").html(`
+                $("#recommendation_result_servical").html(`
                     <p><strong>Prediction:</strong> ${response.prediction}</p>
                     <p><strong>Probability:</strong> ${response.probability}%</p>
                 `);
             },
             error: function (xhr, status, error) {
                 console.error("❌ Error:", xhr.responseText);
-                $("#recommendation-result").html(`<p style="color:red;">Error: ${xhr.responseText}</p>`);
+                $("#recommendation_result_servical").html(`<p style="color:red;">Error: ${xhr.responseText}</p>`);
             }
         });
     });
